@@ -8,11 +8,13 @@ let dogs = [
 module.exports = {
   async findAll() {
     // SELECT * FROM dogs;
+    // return Promise.reject({message: 'AAAGH DISASTER'})
     return dogs
   },
 
   async findById(id) {
     // SELECT * FROM dogs WHERE id = 1;
+    // throw new Error('HORROR!')
     const dog = dogs.find(d => d.id === id)
     return dog
   },
@@ -24,7 +26,7 @@ module.exports = {
     return newDog
   },
 
-  async update(id, changes) {
+  async update(id, changes) { // changes with name and weight
     // UPDATE dogs SET name = 'Foo', weight = 9 WHERE id = 1;
     const dog = dogs.find(dog => dog.id === id)
     if (!dog) return null
